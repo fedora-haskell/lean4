@@ -1,3 +1,5 @@
+%global debug_package %{nil}
+
 Name:           lean4
 Version:        4.3.0
 Release:        1%{?dist}
@@ -23,29 +25,30 @@ manipulating its data, rather than the details of programming.
 
 
 %build
-%cmake -DLEAN_BUILD_TYPE="Release" -DUSE_GITHASH=OFF
+%cmake -DLEAN_BUILD_TYPE="Release" -DUSE_GITHASH=OFF -DLEAN_INSTALL_PREFIX=%{buildroot}
 %cmake_build
 
 
 %install
 # does not do anything
-%cmake_install
-%global leandir %{_libdir}/lean
-mkdir -p %{buildroot}%{leandir} %{buildroot}%{_bindir}
-cp -pr redhat-linux-build/stage1/* %{buildroot}%{leandir}
-(
-cd %{buildroot}
-for i in %{leandir}/bin/*; do
-ln -s $i %{buildroot}%{_bindir}
+#%%cmake_install
+make -C redhat-linux-build/stage1 install
+mkdir -p %{buildroot}%{_prefix}
+rm %{buildroot}/lean-%{version}-linux/LICENSE*
+for i in %{buildroot}/lean-%{version}-linux/*/; do
+mv $i %{buildroot}%{_prefix}
 done
-)
+
 
 
 %files
 %license LICENSE
 %doc CONTRIBUTING.md README.md RELEASES.md
 %{_bindir}/*
-%{leandir}
+%{_includedir}/lean
+%{_prefix}/lib/lean
+%{_datadir}/lean
+%{_prefix}/src/lean
 
 
 %changelog
