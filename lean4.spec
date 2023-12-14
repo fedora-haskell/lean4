@@ -28,13 +28,24 @@ manipulating its data, rather than the details of programming.
 
 
 %install
+# does not do anything
 %cmake_install
+%global leandir %{_libdir}/lean
+mkdir -p %{buildroot}%{leandir} %{buildroot}%{_bindir}
+cp -pr redhat-linux-build/stage1/* %{buildroot}%{leandir}
+(
+cd %{buildroot}
+for i in %{leandir}/bin/*; do
+ln -s $i %{buildroot}%{_bindir}
+done
+)
 
 
 %files
 %license LICENSE
 %doc CONTRIBUTING.md README.md RELEASES.md
-
+%{_bindir}/*
+%{leandir}
 
 
 %changelog
