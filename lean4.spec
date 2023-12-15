@@ -11,6 +11,7 @@ Source0:        https://github.com/leanprover/lean4/archive/refs/tags/v%{version
 
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
+BuildRequires:  gmp-devel
 
 %description
 Lean is a functional programming language that makes it easy to write
