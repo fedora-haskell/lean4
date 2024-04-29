@@ -1,7 +1,8 @@
+# Empty file debugsourcefiles.list
 %global debug_package %{nil}
 
 Name:           lean4
-Version:        4.3.0
+Version:        4.7.0
 Release:        1%{?dist}
 Summary:        Functional programming language and theorem prover
 
@@ -31,8 +32,7 @@ manipulating its data, rather than the details of programming.
 
 
 %install
-# does not do anything
-#%%cmake_install
+# cmake_install does not do anything
 make -C redhat-linux-build/stage1 install
 mkdir -p %{buildroot}%{_prefix}
 rm %{buildroot}/lean-%{version}-linux/LICENSE*
@@ -53,5 +53,9 @@ done
 
 
 %changelog
-* Tue Dec 12 2023 Jens Petersen <petersen@redhat.com>
+* Mon Apr 29 2024 Jens Petersen <petersen@redhat.com> - 4.7.0-1
+- https://github.com/leanprover/lean4/releases/tag/v4.7.0
+- https://lean-lang.org/blog/2024-4-4-lean-470/
+
+* Tue Dec 12 2023 Jens Petersen <petersen@redhat.com> - 4.3.0.-1
 - initial packaging
