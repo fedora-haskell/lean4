@@ -3,7 +3,7 @@
 
 Name:           lean4
 Version:        4.7.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Functional programming language and theorem prover
 
 License:        Apache-2.0
@@ -13,6 +13,7 @@ Source0:        https://github.com/leanprover/lean4/archive/refs/tags/v%{version
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  gmp-devel
+ExcludeArch:    s390x %{ix86}
 
 %description
 Lean is a functional programming language that makes it easy to write
@@ -40,6 +41,9 @@ for i in %{buildroot}/lean-%{version}-linux/*/; do
 mv $i %{buildroot}%{_prefix}
 done
 
+strip %{buildroot}%{_bindir}/{lake,lean,leanc}
+chmod a+x %{buildroot}%{_prefix}/lib/lean/lib*shared.so
+strip %{buildroot}%{_prefix}/lib/lean/lib*shared.so
 
 
 %files
@@ -53,6 +57,9 @@ done
 
 
 %changelog
+* Tue Apr 30 2024 Jens Petersen <petersen@redhat.com> - 4.7.0-2
+- strip bin and lib*.so files
+
 * Mon Apr 29 2024 Jens Petersen <petersen@redhat.com> - 4.7.0-1
 - https://github.com/leanprover/lean4/releases/tag/v4.7.0
 - https://lean-lang.org/blog/2024-4-4-lean-470/
