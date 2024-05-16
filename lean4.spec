@@ -3,7 +3,7 @@
 
 Name:           lean4
 Version:        4.7.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Functional programming language and theorem prover
 
 License:        Apache-2.0
@@ -35,28 +35,46 @@ manipulating its data, rather than the details of programming.
 %install
 # cmake_install does not do anything
 make -C redhat-linux-build/stage1 install
-mkdir -p %{buildroot}%{_prefix}
-rm %{buildroot}/lean-%{version}-linux/LICENSE*
-for i in %{buildroot}/lean-%{version}-linux/*/; do
-mv $i %{buildroot}%{_prefix}
-done
 
-strip %{buildroot}%{_bindir}/{lake,lean,leanc}
-chmod a+x %{buildroot}%{_prefix}/lib/lean/lib*shared.so
-strip %{buildroot}%{_prefix}/lib/lean/lib*shared.so
+%global leandir %{_libdir}/%{name}
+mkdir -p %{buildroot}%{leandir}
+rm -f %{buildroot}/lean-%{version}-linux/LICENSE*
+mv %{buildroot}/lean-%{version}-linux/* %{buildroot}%{leandir}
+
+strip %{buildroot}%{leandir}/bin/{lake,lean,leanc}
+chmod a+x %{buildroot}%{leandir}/lib/lean/lib*shared.so
+strip %{buildroot}%{leandir}/lib/lean/lib*shared.so
+
+mkdir -p %{buildroot}%{_bindir}
+(
+cd %{buildroot}%{_bindir}
+ln -s ../%{_lib}/%{name}/bin/* .
+)
 
 
 %files
 %license LICENSE
 %doc CONTRIBUTING.md README.md RELEASES.md
-%{_bindir}/*
-%{_includedir}/lean
-%{_prefix}/lib/lean
-%{_datadir}/lean
-%{_prefix}/src/lean
+%{_bindir}/lake
+%{_bindir}/lean
+%{_bindir}/leanc
+%{_bindir}/leanmake
+%dir %{leandir}
+%{leandir}/bin
+%dir %{leandir}/include
+%{leandir}/include/lean
+%dir %{leandir}/lib
+%{leandir}/lib/lean
+%dir %{leandir}/share
+%{leandir}/share/lean
+%dir %{leandir}/src
+%{leandir}/src/lean
 
 
 %changelog
+* Thu May  2 2024 Jens Petersen <petersen@redhat.com> - 4.7.0-3
+- install under libdir/lean4 for now with symlinks to bindir
+
 * Tue Apr 30 2024 Jens Petersen <petersen@redhat.com> - 4.7.0-2
 - strip bin and lib*.so files
 
