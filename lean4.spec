@@ -3,12 +3,13 @@
 
 Name:           lean4
 Version:        4.7.0
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Functional programming language and theorem prover
 
 License:        Apache-2.0
 URL:            https://lean-lang.org/
 Source0:        https://github.com/leanprover/lean4/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Patch0:         lean4-ldflags-libgmp.patch
 
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
@@ -24,11 +25,14 @@ manipulating its data, rather than the details of programming.
 
 
 %prep
-%autosetup
+%autosetup -p1
 
 
 %build
-%cmake -DLEAN_BUILD_TYPE="Release" -DUSE_GITHASH=OFF -DLEAN_INSTALL_PREFIX=%{buildroot}
+%cmake \
+  -DLEAN_BUILD_TYPE="RELEASE" \
+  -DUSE_GITHASH=OFF \
+  -DLEAN_INSTALL_PREFIX=%{buildroot}
 %cmake_build
 
 
@@ -72,6 +76,9 @@ ln -s ../%{_lib}/%{name}/bin/* .
 
 
 %changelog
+* Fri May 17 2024 Jens Petersen <petersen@redhat.com> - 4.7.0-4
+- link with -lgmp instead of libgmp.so file
+
 * Thu May  2 2024 Jens Petersen <petersen@redhat.com> - 4.7.0-3
 - install under libdir/lean4 for now with symlinks to bindir
 
