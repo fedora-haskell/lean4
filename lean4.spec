@@ -2,8 +2,8 @@
 %global debug_package %{nil}
 
 Name:           lean4
-Version:        4.7.0
-Release:        4%{?dist}
+Version:        4.8.0
+Release:        1%{?dist}
 Summary:        Functional programming language and theorem prover
 
 License:        Apache-2.0
@@ -40,10 +40,11 @@ manipulating its data, rather than the details of programming.
 # cmake_install does not do anything
 make -C redhat-linux-build/stage1 install
 
-%global leandir %{_libdir}/%{name}
-mkdir -p %{buildroot}%{leandir}
+%define lean lean4
+%global leandir %{_libdir}/%{lean}
+mkdir -p %{buildroot}%{_libdir}
 rm -f %{buildroot}/lean-%{version}-linux/LICENSE*
-mv %{buildroot}/lean-%{version}-linux/* %{buildroot}%{leandir}
+mv %{buildroot}/lean-%{version}-linux %{buildroot}%{leandir}
 
 strip %{buildroot}%{leandir}/bin/{lake,lean,leanc}
 chmod a+x %{buildroot}%{leandir}/lib/lean/lib*shared.so
@@ -52,7 +53,7 @@ strip %{buildroot}%{leandir}/lib/lean/lib*shared.so
 mkdir -p %{buildroot}%{_bindir}
 (
 cd %{buildroot}%{_bindir}
-ln -s ../%{_lib}/%{name}/bin/* .
+ln -s ../%{_lib}/%{lean}/bin/* .
 )
 
 
@@ -76,6 +77,10 @@ ln -s ../%{_lib}/%{name}/bin/* .
 
 
 %changelog
+* Thu Jun  6 2024 Jens Petersen <petersen@redhat.com> - 4.8.0-1
+- https://lean-lang.org/blog/2024-6-1-lean-480/
+- https://github.com/leanprover/lean4/releases/tag/v4.8.0
+
 * Fri May 17 2024 Jens Petersen <petersen@redhat.com> - 4.7.0-4
 - link with -lgmp instead of libgmp.so file
 
