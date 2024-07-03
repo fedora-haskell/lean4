@@ -15,6 +15,7 @@ BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  gmp-devel
 ExcludeArch:    s390x %{ix86}
+Provides:       %{name}-static = %{version}-%{release}
 
 %description
 Lean is a functional programming language that makes it easy to write
