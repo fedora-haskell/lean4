@@ -2,7 +2,7 @@
 %global debug_package %{nil}
 
 Name:           lean4
-Version:        4.9.0
+Version:        4.9.1
 Release:        1%{?dist}
 Summary:        Functional programming language and theorem prover
 
@@ -78,6 +78,9 @@ ln -s ../%{_lib}/%{lean}/bin/* .
 
 
 %changelog
+* Fri Jul 12 2024 Jens Petersen <petersen@redhat.com> - 4.9.1-1
+- https://github.com/leanprover/lean4/releases/tag/v4.9.1
+
 * Wed Jul  3 2024 Jens Petersen <petersen@redhat.com> - 4.9.0-1
 - https://lean-lang.org/blog/2024-7-1-lean-490/
 - https://github.com/leanprover/lean4/releases/tag/v4.9.0
