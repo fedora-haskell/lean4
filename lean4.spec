@@ -1,14 +1,16 @@
 # Empty file debugsourcefiles.list
 %global debug_package %{nil}
 
+%global patchlevel 4.9.1
+
 Name:           lean4
-Version:        4.9.1
-Release:        1%{?dist}
+Version:        4.9.0
+Release:        2%{?dist}
 Summary:        Functional programming language and theorem prover
 
 License:        Apache-2.0
 URL:            https://lean-lang.org/
-Source0:        https://github.com/leanprover/lean4/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        https://github.com/leanprover/lean4/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{patchlevel}.tar.gz
 Patch0:         lean4-ldflags-libgmp.patch
 
 BuildRequires:  cmake
@@ -26,7 +28,7 @@ manipulating its data, rather than the details of programming.
 
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n %{name}-%{patchlevel}
 
 
 %build
@@ -78,7 +80,7 @@ ln -s ../%{_lib}/%{lean}/bin/* .
 
 
 %changelog
-* Fri Jul 12 2024 Jens Petersen <petersen@redhat.com> - 4.9.1-1
+* Fri Jul 12 2024 Jens Petersen <petersen@redhat.com> - 4.9.0-2
 - https://github.com/leanprover/lean4/releases/tag/v4.9.1
 
 * Wed Jul  3 2024 Jens Petersen <petersen@redhat.com> - 4.9.0-1
