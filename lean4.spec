@@ -1,7 +1,7 @@
 # Empty file debugsourcefiles.list
 %global debug_package %{nil}
 
-%global majorversion 4.10
+%global majorversion 4.11
 %global patchlevel 0
 %global upstreamversion %{majorversion}.%{patchlevel}
 
@@ -83,6 +83,9 @@ ln -s ../%{_lib}/%{lean}/bin/* .
 
 
 %changelog
+* Thu Oct  3 2024 Jens Petersen <petersen@redhat.com> - 4.11.0-1
+- https://github.com/leanprover/lean4/releases/tag/v4.11.0
+
 * Thu Aug  1 2024 Jens Petersen <petersen@redhat.com> - 4.10.0-1
 - https://github.com/leanprover/lean4/releases/tag/v4.10.0
 - add some macros to handle minor point releases
