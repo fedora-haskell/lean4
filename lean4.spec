@@ -1,7 +1,7 @@
 # Empty file debugsourcefiles.list
 %global debug_package %{nil}
 
-%global majorversion 4.11
+%global majorversion 4.12
 %global patchlevel 0
 %global upstreamversion %{majorversion}.%{patchlevel}
 
@@ -16,9 +16,11 @@ URL:            https://lean-lang.org/
 Source0:        https://github.com/leanprover/lean4/archive/refs/tags/v%{upstreamversion}.tar.gz#/%{name}-%{upstreamversion}.tar.gz
 Patch0:         lean4-ldflags-libgmp.patch
 
+BuildRequires:  cadical
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  gmp-devel
+BuildRequires:  libuv-devel
 ExcludeArch:    s390x %{ix86}
 Provides:       %{name}-static = %{version}-%{release}
 
@@ -62,6 +64,8 @@ cd %{buildroot}%{_bindir}
 ln -s ../%{_lib}/%{lean}/bin/* .
 )
 
+rm %{buildroot}%{_bindir}/cadical
+
 
 %files
 %license LICENSE
@@ -83,6 +87,9 @@ ln -s ../%{_lib}/%{lean}/bin/* .
 
 
 %changelog
+* Thu Oct  3 2024 Jens Petersen <petersen@redhat.com> - 4.12.0-1
+- https://github.com/leanprover/lean4/releases/tag/v4.12.0
+
 * Thu Oct  3 2024 Jens Petersen <petersen@redhat.com> - 4.11.0-1
 - https://github.com/leanprover/lean4/releases/tag/v4.11.0
 
