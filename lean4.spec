@@ -16,7 +16,11 @@ URL:            https://lean-lang.org/
 Source0:        https://github.com/leanprover/lean4/archive/refs/tags/v%{upstreamversion}.tar.gz#/%{name}-%{upstreamversion}.tar.gz
 Patch0:         lean4-ldflags-libgmp.patch
 
+%if %{defined fedora}
 BuildRequires:  cadical
+%else
+BuildRequires:  git-core
+%endif
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  gmp-devel
@@ -87,7 +91,7 @@ rm %{buildroot}%{_bindir}/cadical
 
 
 %changelog
-* Thu Oct  3 2024 Jens Petersen <petersen@redhat.com> - 4.12.0-1
+* Sun Nov  3 2024 Jens Petersen <petersen@redhat.com> - 4.12.0-1
 - https://github.com/leanprover/lean4/releases/tag/v4.12.0
 
 * Thu Oct  3 2024 Jens Petersen <petersen@redhat.com> - 4.11.0-1
