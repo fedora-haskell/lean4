@@ -1,7 +1,7 @@
 # Empty file debugsourcefiles.list
 %global debug_package %{nil}
 
-%global majorversion 4.12
+%global majorversion 4.13
 %global patchlevel 0
 %global upstreamversion %{majorversion}.%{patchlevel}
 
@@ -91,6 +91,9 @@ rm %{buildroot}%{_bindir}/cadical
 
 
 %changelog
+* Sun Nov  3 2024 Jens Petersen <petersen@redhat.com> - 4.13.0-1
+- https://github.com/leanprover/lean4/releases/tag/v4.13.0
+
 * Sun Nov  3 2024 Jens Petersen <petersen@redhat.com> - 4.12.0-1
 - https://github.com/leanprover/lean4/releases/tag/v4.12.0
 
