@@ -17,6 +17,8 @@ License:        Apache-2.0
 URL:            https://lean-lang.org/
 Source0:        https://github.com/leanprover/lean4/archive/refs/tags/v%{upstreamversion}.tar.gz#/%{name}-%{upstreamversion}.tar.gz
 Patch0:         lean4-ldflags-libgmp.patch
+# https://github.com/leanprover/lean4/pull/5931
+Patch1:         lean4-COPY_CADICAL.patch
 
 %if %{defined fedora}
 BuildRequires:  cadical
@@ -46,7 +48,8 @@ manipulating its data, rather than the details of programming.
 %cmake \
   -DLEAN_BUILD_TYPE="RELEASE" \
   -DUSE_GITHASH=OFF \
-  -DLEAN_INSTALL_PREFIX=%{buildroot}
+  -DLEAN_INSTALL_PREFIX=%{buildroot} \
+  -DCOPY_CADICAL=OFF
 %cmake_build
 
 
@@ -69,8 +72,6 @@ mkdir -p %{buildroot}%{_bindir}
 cd %{buildroot}%{_bindir}
 ln -s ../%{_lib}/%{lean}/bin/* .
 )
-
-rm %{buildroot}%{_bindir}/cadical
 
 
 %check
