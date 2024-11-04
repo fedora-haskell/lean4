@@ -6,6 +6,7 @@
 %global upstreamversion %{majorversion}.%{patchlevel}
 
 %bcond tests 1
+%bcond stage2 0
 
 Name:           lean4
 # minor point releases provide the same version
@@ -24,6 +25,9 @@ Patch1:         lean4-COPY_CADICAL.patch
 BuildRequires:  cadical
 %else
 BuildRequires:  git-core
+%endif
+%if %{with stage2}
+BuildRequires:  ccache
 %endif
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
@@ -51,11 +55,18 @@ manipulating its data, rather than the details of programming.
   -DLEAN_INSTALL_PREFIX=%{buildroot} \
   -DCOPY_CADICAL=OFF
 %cmake_build
+%if %{with stage2}
+make -C redhat-linux-build stage2
+%endif
 
 
 %install
 # cmake_install does not do anything
+%if %{with stage2}
+make -C redhat-linux-build/stage2 install
+%else
 make -C redhat-linux-build/stage1 install
+%endif
 
 %define lean lean4
 %global leandir %{_libdir}/%{lean}
