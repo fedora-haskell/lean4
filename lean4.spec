@@ -5,6 +5,8 @@
 %global patchlevel 0
 %global upstreamversion %{majorversion}.%{patchlevel}
 
+%bcond tests 1
+
 Name:           lean4
 # minor point releases provide the same version
 Version:        %{majorversion}.0
@@ -69,6 +71,12 @@ ln -s ../%{_lib}/%{lean}/bin/* .
 )
 
 rm %{buildroot}%{_bindir}/cadical
+
+
+%check
+%if %{with tests}
+%ctest
+%endif
 
 
 %files
