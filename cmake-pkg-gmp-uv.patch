@@ -1,0 +1,36 @@
+--- lean4-4.13.0/src/CMakeLists.txt~	2024-11-22 21:58:51.201717539 +0800
++++ lean4-4.13.0/src/CMakeLists.txt	2024-11-22 22:05:16.265022904 +0800
+@@ -235,6 +235,6 @@
+   endif()
+   if(NOT LEAN_STANDALONE)
+-    string(APPEND LEAN_EXTRA_LINKER_FLAGS " ${GMP_LIBRARIES}")
++    string(APPEND LEAN_EXTRA_LINKER_FLAGS " -lgmp")
+   endif()
+ endif()
+ 
+@@ -241,6 +241,6 @@
+ endif()
+ if(NOT LEAN_STANDALONE)
+-  string(APPEND LEAN_EXTRA_LINKER_FLAGS " ${LIBUV_LIBRARIES}")
++  string(APPEND LEAN_EXTRA_LINKER_FLAGS " -luv -lpthread -ldl -lrt")
+ endif()
+ 
+ # ccache
+--- lean4-4.13.0/stage0/src/CMakeLists.txt~	2024-10-30 10:57:53.000000000 +0800
++++ lean4-4.13.0/stage0/src/CMakeLists.txt	2024-11-22 22:31:13.713461076 +0800
+@@ -235,6 +235,6 @@
+   endif()
+   if(NOT LEAN_STANDALONE)
+-    string(APPEND LEAN_EXTRA_LINKER_FLAGS " ${GMP_LIBRARIES}")
++    string(APPEND LEAN_EXTRA_LINKER_FLAGS " -lgmp")
+   endif()
+ endif()
+ 
+@@ -241,6 +241,6 @@
+ endif()
+ if(NOT LEAN_STANDALONE)
+-  string(APPEND LEAN_EXTRA_LINKER_FLAGS " ${LIBUV_LIBRARIES}")
++  string(APPEND LEAN_EXTRA_LINKER_FLAGS " -luv -lpthread -ldl -lrt")
+ endif()
+ 
+ # ccache

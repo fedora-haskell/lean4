@@ -11,15 +11,15 @@
 Name:           lean4
 # minor point releases provide the same version
 Version:        %{majorversion}.0
-Release:        1%{?dist}
+Release:        3%{?dist}
 Summary:        Functional programming language and theorem prover
 
 License:        Apache-2.0
 URL:            https://lean-lang.org/
 Source0:        https://github.com/leanprover/lean4/archive/refs/tags/v%{upstreamversion}.tar.gz#/%{name}-%{upstreamversion}.tar.gz
-Patch0:         lean4-ldflags-libgmp.patch
 # https://github.com/leanprover/lean4/pull/5931
 Patch1:         lean4-COPY_CADICAL.patch
+Patch2:         cmake-pkg-gmp-uv.patch
 
 %if %{defined fedora}
 BuildRequires:  cadical
@@ -111,6 +111,9 @@ ln -s ../%{_lib}/%{lean}/bin/* .
 
 
 %changelog
+* Fri Nov 22 2024 Jens Petersen <petersen@redhat.com> - 4.13.0-3
+- override cmake LIBUV_LIBRARIES with pkgconf --libs
+
 * Sun Nov  3 2024 Jens Petersen <petersen@redhat.com> - 4.13.0-1
 - https://github.com/leanprover/lean4/releases/tag/v4.13.0
 
