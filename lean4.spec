@@ -11,15 +11,15 @@
 Name:           lean4
 # minor point releases provide the same version
 Version:        %{majorversion}.0
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Functional programming language and theorem prover
 
 License:        Apache-2.0
 URL:            https://lean-lang.org/
 Source0:        https://github.com/leanprover/lean4/archive/refs/tags/v%{upstreamversion}.tar.gz#/%{name}-%{upstreamversion}.tar.gz
 # https://github.com/leanprover/lean4/pull/5931
-Patch1:         lean4-COPY_CADICAL.patch
-Patch2:         cmake-pkg-gmp-uv.patch
+Source1:        cmake-pkg-gmp-uv.patch.in
+Patch0:         lean4-COPY_CADICAL.patch
 
 %if %{defined fedora}
 BuildRequires:  cadical
@@ -46,6 +46,8 @@ manipulating its data, rather than the details of programming.
 
 %prep
 %autosetup -p1 -n %{name}-%{upstreamversion}
+# hack to avoid linking /usr/lib64/libgmp.so /usr/lib64/libuv.so
+sed -e "s/@GMP_LIBRARIES@/$(pkgconf --libs gmp)/" -e "s/@LIBUV_LIBRARIES@/$(pkgconf --libs libuv)/" %SOURCE1 | patch -p1 -b
 
 
 %build
@@ -111,6 +113,9 @@ ln -s ../%{_lib}/%{lean}/bin/* .
 
 
 %changelog
+* Sat Nov 23 2024 Jens Petersen <petersen@redhat.com> - 4.13.0-4
+- use sed to override GMP_LIBRARIES and LIBUV_LIBRARIES with pkgconf --libs
+
 * Fri Nov 22 2024 Jens Petersen <petersen@redhat.com> - 4.13.0-3
 - override cmake LIBUV_LIBRARIES with pkgconf --libs
 

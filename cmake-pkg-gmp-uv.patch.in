@@ -4,7 +4,7 @@
    endif()
    if(NOT LEAN_STANDALONE)
 -    string(APPEND LEAN_EXTRA_LINKER_FLAGS " ${GMP_LIBRARIES}")
-+    string(APPEND LEAN_EXTRA_LINKER_FLAGS " -lgmp")
++    string(APPEND LEAN_EXTRA_LINKER_FLAGS " @GMP_LIBRARIES@")
    endif()
  endif()
  
@@ -12,7 +12,7 @@
  endif()
  if(NOT LEAN_STANDALONE)
 -  string(APPEND LEAN_EXTRA_LINKER_FLAGS " ${LIBUV_LIBRARIES}")
-+  string(APPEND LEAN_EXTRA_LINKER_FLAGS " -luv -lpthread -ldl -lrt")
++  string(APPEND LEAN_EXTRA_LINKER_FLAGS " @LIBUV_LIBRARIES@")
  endif()
  
  # ccache
@@ -22,7 +22,7 @@
    endif()
    if(NOT LEAN_STANDALONE)
 -    string(APPEND LEAN_EXTRA_LINKER_FLAGS " ${GMP_LIBRARIES}")
-+    string(APPEND LEAN_EXTRA_LINKER_FLAGS " -lgmp")
++    string(APPEND LEAN_EXTRA_LINKER_FLAGS " @GMP_LIBRARIES@")
    endif()
  endif()
  
@@ -30,7 +30,7 @@
  endif()
  if(NOT LEAN_STANDALONE)
 -  string(APPEND LEAN_EXTRA_LINKER_FLAGS " ${LIBUV_LIBRARIES}")
-+  string(APPEND LEAN_EXTRA_LINKER_FLAGS " -luv -lpthread -ldl -lrt")
++  string(APPEND LEAN_EXTRA_LINKER_FLAGS " @LIBUV_LIBRARIES@")
  endif()
  
  # ccache
