@@ -47,6 +47,7 @@ manipulating its data, rather than the details of programming.
 %prep
 %autosetup -p1 -n %{name}-%{upstreamversion}
 # hack to avoid linking /usr/lib64/libgmp.so /usr/lib64/libuv.so
+# https://github.com/leanprover/lean4/issues/6183
 sed -e "s/@GMP_LIBRARIES@/$(pkgconf --libs gmp)/" -e "s/@LIBUV_LIBRARIES@/$(pkgconf --libs libuv)/" %SOURCE1 | patch -p1 -b
 
 
