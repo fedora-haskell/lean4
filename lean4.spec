@@ -1,7 +1,7 @@
 # Empty file debugsourcefiles.list
 %global debug_package %{nil}
 
-%global majorversion 4.13
+%global majorversion 4.14
 %global patchlevel 0
 %global upstreamversion %{majorversion}.%{patchlevel}
 
@@ -11,7 +11,7 @@
 Name:           lean4
 # minor point releases provide the same version
 Version:        %{majorversion}.0
-Release:        4%{?dist}
+Release:        1%{?dist}
 Summary:        Functional programming language and theorem prover
 
 License:        Apache-2.0
@@ -114,6 +114,9 @@ ln -s ../%{_lib}/%{lean}/bin/* .
 
 
 %changelog
+* Mon Dec  2 2024 Jens Petersen <petersen@redhat.com> - 4.14.0-1
+- https://github.com/leanprover/lean4/releases/tag/v4.14.0
+
 * Sat Nov 23 2024 Jens Petersen <petersen@redhat.com> - 4.13.0-4
 - use sed to override GMP_LIBRARIES and LIBUV_LIBRARIES with pkgconf --libs
 
