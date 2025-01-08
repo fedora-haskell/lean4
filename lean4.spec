@@ -59,6 +59,7 @@ sed -e "s/@GMP_LIBRARIES@/$(pkgconf --libs gmp)/" -e "s/@LIBUV_LIBRARIES@/$(pkgc
   -DCOPY_CADICAL=OFF
 %cmake_build
 %if %{with stage2}
+# failing
 make -C redhat-linux-build stage2
 %endif
 
