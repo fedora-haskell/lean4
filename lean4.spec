@@ -19,7 +19,6 @@ URL:            https://lean-lang.org/
 Source0:        https://github.com/leanprover/lean4/archive/refs/tags/v%{upstreamversion}.tar.gz#/%{name}-%{upstreamversion}.tar.gz
 # https://github.com/leanprover/lean4/pull/5931
 Source1:        cmake-pkg-gmp-uv.patch.in
-Patch0:         lean4-COPY_CADICAL.patch
 
 %if %{defined fedora}
 BuildRequires:  cadical
@@ -56,7 +55,7 @@ sed -e "s/@GMP_LIBRARIES@/$(pkgconf --libs gmp)/" -e "s/@LIBUV_LIBRARIES@/$(pkgc
   -DLEAN_BUILD_TYPE="RELEASE" \
   -DUSE_GITHASH=OFF \
   -DLEAN_INSTALL_PREFIX=%{buildroot} \
-  -DCOPY_CADICAL=OFF
+  -DINSTALL_CADICAL=OFF
 %cmake_build
 %if %{with stage2}
 # failing
