@@ -1,7 +1,7 @@
 # Empty file debugsourcefiles.list
 %global debug_package %{nil}
 
-%global majorversion 4.14
+%global majorversion 4.15
 %global patchlevel 0
 %global upstreamversion %{majorversion}.%{patchlevel}
 
@@ -115,8 +115,12 @@ ln -s ../%{_lib}/%{lean}/bin/* .
 
 
 %changelog
+* Wed Jan  8 2025 Jens Petersen <petersen@redhat.com> - 4.15.0-1
+- https://github.com/leanprover/lean4/releases/tag/v4.15.0
+
 * Mon Dec  2 2024 Jens Petersen <petersen@redhat.com> - 4.14.0-1
 - https://github.com/leanprover/lean4/releases/tag/v4.14.0
+- https://lean-lang.org/blog/2024-12-9-lean-4140/
 
 * Sat Nov 23 2024 Jens Petersen <petersen@redhat.com> - 4.13.0-4
 - use sed to override GMP_LIBRARIES and LIBUV_LIBRARIES with pkgconf --libs
