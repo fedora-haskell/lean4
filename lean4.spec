@@ -1,11 +1,11 @@
 # Empty file debugsourcefiles.list
 %global debug_package %{nil}
 
-%global majorversion 4.15
+%global majorversion 4.16
 %global patchlevel 0
 %global upstreamversion %{majorversion}.%{patchlevel}
 
-%bcond tests 1
+%bcond tests 0
 %bcond stage2 0
 
 Name:           lean4
@@ -114,6 +114,9 @@ ln -s ../%{_lib}/%{lean}/bin/* .
 
 
 %changelog
+* Mon Feb  3 2025 Jens Petersen <petersen@redhat.com> - 4.16.0-1
+- https://github.com/leanprover/lean4/releases/tag/v4.16.0
+
 * Wed Jan  8 2025 Jens Petersen <petersen@redhat.com> - 4.15.0-1
 - https://github.com/leanprover/lean4/releases/tag/v4.15.0
 
