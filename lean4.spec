@@ -1,7 +1,7 @@
 # Empty file debugsourcefiles.list
 %global debug_package %{nil}
 
-%global majorversion 4.16
+%global majorversion 4.17
 %global patchlevel 0
 %global upstreamversion %{majorversion}.%{patchlevel}
 
@@ -17,8 +17,6 @@ Summary:        Functional programming language and theorem prover
 License:        Apache-2.0
 URL:            https://lean-lang.org/
 Source0:        https://github.com/leanprover/lean4/archive/refs/tags/v%{upstreamversion}.tar.gz#/%{name}-%{upstreamversion}.tar.gz
-# https://github.com/leanprover/lean4/pull/5931
-Source1:        cmake-pkg-gmp-uv.patch.in
 
 %if %{defined fedora}
 BuildRequires:  cadical
@@ -44,10 +42,7 @@ manipulating its data, rather than the details of programming.
 
 
 %prep
-%autosetup -p1 -n %{name}-%{upstreamversion}
-# hack to avoid linking /usr/lib64/libgmp.so /usr/lib64/libuv.so
-# https://github.com/leanprover/lean4/issues/6183
-sed -e "s/@GMP_LIBRARIES@/$(pkgconf --libs gmp)/" -e "s/@LIBUV_LIBRARIES@/$(pkgconf --libs libuv)/" %SOURCE1 | patch -p1 -b
+%setup -n %{name}-%{upstreamversion}
 
 
 %build
@@ -114,6 +109,9 @@ ln -s ../%{_lib}/%{lean}/bin/* .
 
 
 %changelog
+* Wed Mar 05 2025 Jens Petersen  <petersen@redhat.com> - 4.17.0-1
+- https://github.com/leanprover/lean4/releases/tag/v4.17.0
+
 * Mon Feb  3 2025 Jens Petersen <petersen@redhat.com> - 4.16.0-1
 - https://github.com/leanprover/lean4/releases/tag/v4.16.0
 
