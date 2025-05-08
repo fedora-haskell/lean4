@@ -1,7 +1,7 @@
 # Empty file debugsourcefiles.list
 %global debug_package %{nil}
 
-%global majorversion 4.18
+%global majorversion 4.19
 %global patchlevel 0
 %global upstreamversion %{majorversion}.%{patchlevel}
 
@@ -21,6 +21,7 @@ Source0:        https://github.com/leanprover/lean4/archive/refs/tags/v%{upstrea
 %if %{defined fedora}
 BuildRequires:  cadical
 %else
+# also needed to build mimalloc from source
 BuildRequires:  git-core
 %endif
 %if %{with stage2}
@@ -30,6 +31,7 @@ BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  gmp-devel
 BuildRequires:  libuv-devel
+#BuildRequires:  mimalloc-devel
 ExcludeArch:    s390x %{ix86}
 Provides:       %{name}-static = %{version}-%{release}
 
@@ -42,7 +44,7 @@ manipulating its data, rather than the details of programming.
 
 
 %prep
-%setup -n %{name}-%{upstreamversion}
+%setup -q -n %{name}-%{upstreamversion}
 
 
 %build
@@ -50,7 +52,8 @@ manipulating its data, rather than the details of programming.
   -DLEAN_BUILD_TYPE="RELEASE" \
   -DUSE_GITHASH=OFF \
   -DLEAN_INSTALL_PREFIX=%{buildroot} \
-  -DINSTALL_CADICAL=OFF
+  -DINSTALL_CADICAL=OFF \
+  -DUSE_MIMALLOC=OFF
 %cmake_build
 %if %{with stage2}
 # failing
@@ -109,10 +112,13 @@ ln -s ../%{_lib}/%{lean}/bin/* .
 
 
 %changelog
-* Wed Apr 02 2025 Jens Petersen  <petersen@redhat.com> - 4.18.0-1
+* Sat May 03 2025 Jens Petersen <petersen@redhat.com> - 4.19.0-1
+- https://github.com/leanprover/lean4/releases/tag/v4.19.0
+
+* Wed Apr 02 2025 Jens Petersen <petersen@redhat.com> - 4.18.0-1
 - https://github.com/leanprover/lean4/releases/tag/v4.18.0
 
-* Wed Mar 05 2025 Jens Petersen  <petersen@redhat.com> - 4.17.0-1
+* Wed Mar 05 2025 Jens Petersen <petersen@redhat.com> - 4.17.0-1
 - https://github.com/leanprover/lean4/releases/tag/v4.17.0
 
 * Mon Feb  3 2025 Jens Petersen <petersen@redhat.com> - 4.16.0-1
