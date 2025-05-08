@@ -1,9 +1,11 @@
 # Empty file debugsourcefiles.list
 %global debug_package %{nil}
 
-%global majorversion 4.19
+%global majorversion 4.20
 %global patchlevel 0
 %global upstreamversion %{majorversion}.%{patchlevel}
+
+%global rcrel -rc5
 
 %bcond tests 0
 %bcond stage2 0
@@ -11,13 +13,12 @@
 Name:           lean4
 # minor point releases provide the same version
 Version:        %{majorversion}.0
-Release:        1%{?dist}
+Release:        0%{?rcrel}%{?dist}
 Summary:        Functional programming language and theorem prover
 
 License:        Apache-2.0
 URL:            https://lean-lang.org/
-Source0:        https://github.com/leanprover/lean4/archive/refs/tags/v%{upstreamversion}.tar.gz#/%{name}-%{upstreamversion}.tar.gz
-
+Source0:        https://github.com/leanprover/lean4/archive/refs/tags/v%{upstreamversion}%{?rcrel}.tar.gz#/%{name}-%{upstreamversion}%{?rcrel}.tar.gz
 %if %{defined fedora}
 BuildRequires:  cadical
 %else
@@ -44,7 +45,7 @@ manipulating its data, rather than the details of programming.
 
 
 %prep
-%setup -q -n %{name}-%{upstreamversion}
+%setup -q -n %{name}-%{upstreamversion}%{rcrel}
 
 
 %build
