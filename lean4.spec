@@ -113,20 +113,23 @@ ln -s ../%{_lib}/%{lean}/bin/* .
 
 
 %changelog
+* Tue Jun 03 2025 Jens Petersen <petersen@redhat.com> - 4.20.0-1
+- https://lean-lang.org/doc/reference/latest/releases/v4.20.0/#release-v4___20___0
+
 * Sat May 03 2025 Jens Petersen <petersen@redhat.com> - 4.19.0-1
-- https://github.com/leanprover/lean4/releases/tag/v4.19.0
+- https://lean-lang.org/doc/reference/latest/releases/v4.19.0/#release-v4___19___0
 
 * Wed Apr 02 2025 Jens Petersen <petersen@redhat.com> - 4.18.0-1
-- https://github.com/leanprover/lean4/releases/tag/v4.18.0
+- https://lean-lang.org/doc/reference/latest/releases/v4.18.0/#release-v4___18___0
 
 * Wed Mar 05 2025 Jens Petersen <petersen@redhat.com> - 4.17.0-1
-- https://github.com/leanprover/lean4/releases/tag/v4.17.0
+- https://lean-lang.org/doc/reference/latest/releases/v4.17.0/#release-v4___17___0
 
 * Mon Feb  3 2025 Jens Petersen <petersen@redhat.com> - 4.16.0-1
-- https://github.com/leanprover/lean4/releases/tag/v4.16.0
+- https://lean-lang.org/doc/reference/latest/releases/v4.16.0/#release-v4___16___0
 
 * Wed Jan  8 2025 Jens Petersen <petersen@redhat.com> - 4.15.0-1
-- https://github.com/leanprover/lean4/releases/tag/v4.15.0
+- https://lean-lang.org/doc/reference/latest/releases/v4.15.0/#release-v4___15___0
 
 * Mon Dec  2 2024 Jens Petersen <petersen@redhat.com> - 4.14.0-1
 - https://github.com/leanprover/lean4/releases/tag/v4.14.0
