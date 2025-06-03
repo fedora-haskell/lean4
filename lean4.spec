@@ -5,7 +5,7 @@
 %global patchlevel 0
 %global upstreamversion %{majorversion}.%{patchlevel}
 
-%global rcrel -rc5
+#%%global rcrel -rc5
 
 %bcond tests 0
 %bcond stage2 0
@@ -13,7 +13,7 @@
 Name:           lean4
 # minor point releases provide the same version
 Version:        %{majorversion}.0
-Release:        0%{?rcrel}%{?dist}
+Release:        1%{?rcrel}%{?dist}
 Summary:        Functional programming language and theorem prover
 
 License:        Apache-2.0
@@ -45,7 +45,7 @@ manipulating its data, rather than the details of programming.
 
 
 %prep
-%setup -q -n %{name}-%{upstreamversion}%{rcrel}
+%setup -q -n %{name}-%{upstreamversion}%{?rcrel}
 
 
 %build
