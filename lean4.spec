@@ -2,7 +2,7 @@
 %global debug_package %{nil}
 
 %global majorversion 4.20
-%global patchlevel 0
+%global patchlevel 1
 %global upstreamversion %{majorversion}.%{patchlevel}
 
 #%%global rcrel -rc5
@@ -13,7 +13,7 @@
 Name:           lean4
 # minor point releases provide the same version
 Version:        %{majorversion}.0
-Release:        1%{?rcrel}%{?dist}
+Release:        2%{?rcrel}%{?dist}
 Summary:        Functional programming language and theorem prover
 
 License:        Apache-2.0
@@ -113,23 +113,26 @@ ln -s ../%{_lib}/%{lean}/bin/* .
 
 
 %changelog
+* Wed Jun 04 2025 Jens Petersen <petersen@redhat.com> - 4.20.0-2
+- update to 4.20.1
+
 * Tue Jun 03 2025 Jens Petersen <petersen@redhat.com> - 4.20.0-1
-- https://lean-lang.org/doc/reference/latest/releases/v4.20.0/#release-v4___20___0
+- https://lean-lang.org/doc/reference/latest/releases/v4.20.0/
 
 * Sat May 03 2025 Jens Petersen <petersen@redhat.com> - 4.19.0-1
-- https://lean-lang.org/doc/reference/latest/releases/v4.19.0/#release-v4___19___0
+- https://lean-lang.org/doc/reference/latest/releases/v4.19.0/
 
 * Wed Apr 02 2025 Jens Petersen <petersen@redhat.com> - 4.18.0-1
-- https://lean-lang.org/doc/reference/latest/releases/v4.18.0/#release-v4___18___0
+- https://lean-lang.org/doc/reference/latest/releases/v4.18.0/
 
 * Wed Mar 05 2025 Jens Petersen <petersen@redhat.com> - 4.17.0-1
-- https://lean-lang.org/doc/reference/latest/releases/v4.17.0/#release-v4___17___0
+- https://lean-lang.org/doc/reference/latest/releases/v4.17.0/
 
 * Mon Feb  3 2025 Jens Petersen <petersen@redhat.com> - 4.16.0-1
-- https://lean-lang.org/doc/reference/latest/releases/v4.16.0/#release-v4___16___0
+- https://lean-lang.org/doc/reference/latest/releases/v4.16.0/
 
 * Wed Jan  8 2025 Jens Petersen <petersen@redhat.com> - 4.15.0-1
-- https://lean-lang.org/doc/reference/latest/releases/v4.15.0/#release-v4___15___0
+- https://lean-lang.org/doc/reference/latest/releases/v4.15.0/
 
 * Mon Dec  2 2024 Jens Petersen <petersen@redhat.com> - 4.14.0-1
 - https://github.com/leanprover/lean4/releases/tag/v4.14.0
