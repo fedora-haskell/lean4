@@ -13,7 +13,7 @@
 Name:           lean4
 # minor point releases provide the same version
 Version:        %{majorversion}.0
-Release:        3%{?rcrel}%{?dist}
+Release:        4%{?rcrel}%{?dist}
 Summary:        Functional programming language and theorem prover
 
 License:        Apache-2.0
@@ -35,8 +35,8 @@ BuildRequires:  libuv-devel
 #BuildRequires:  mimalloc-devel
 ExcludeArch:    s390x %{ix86}
 Provides:       %{name}-static = %{version}-%{release}
-Requires:       gcc-c++
 Requires:       gmp-devel
+Requires:       libstdc++-devel
 Requires:       libuv-devel
 
 %description
@@ -116,6 +116,9 @@ ln -s ../%{_lib}/%{lean}/bin/* .
 
 
 %changelog
+* Thu Jun 12 2025 Jens Petersen <petersen@redhat.com> - 4.20.0-4
+- require libstdc++-devel instead of gcc-c++
+
 * Thu Jun 12 2025 Jens Petersen <petersen@redhat.com> - 4.20.0-3
 - requires for c++, gmp, and uv
 
