@@ -80,8 +80,8 @@ rm -f %{buildroot}/lean-%{version}-linux/LICENSE*
 mv %{buildroot}/lean-%{version}-linux %{buildroot}%{leandir}
 
 strip %{buildroot}%{leandir}/bin/{lake,lean,leanc}
-chmod a+x %{buildroot}%{leandir}/lib/lean/lib*shared.so
-strip %{buildroot}%{leandir}/lib/lean/lib*shared.so
+chmod a+x %{buildroot}%{leandir}/lib/lean/lib*shared*.so
+strip %{buildroot}%{leandir}/lib/lean/lib*shared*.so
 
 mkdir -p %{buildroot}%{_bindir}
 (
@@ -118,6 +118,7 @@ ln -s ../%{_lib}/%{lean}/bin/* .
 %changelog
 * Thu Jun 12 2025 Jens Petersen <petersen@redhat.com> - 4.20.0-4
 - require libstdc++-devel instead of gcc-c++
+- fixup liblean_shared_1.so permissions (needed for c9s) - thanks @salimma
 
 * Thu Jun 12 2025 Jens Petersen <petersen@redhat.com> - 4.20.0-3
 - requires for c++, gmp, and uv
