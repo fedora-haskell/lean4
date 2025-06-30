@@ -1,8 +1,8 @@
 # Empty file debugsourcefiles.list
 %global debug_package %{nil}
 
-%global majorversion 4.20
-%global patchlevel 1
+%global majorversion 4.21
+%global patchlevel 0
 %global upstreamversion %{majorversion}.%{patchlevel}
 
 #%%global rcrel -rc5
@@ -13,7 +13,7 @@
 Name:           lean4
 # minor point releases provide the same version
 Version:        %{majorversion}.0
-Release:        4%{?rcrel}%{?dist}
+Release:        1%{?rcrel}%{?dist}
 Summary:        Functional programming language and theorem prover
 
 License:        Apache-2.0
@@ -116,6 +116,9 @@ ln -s ../%{_lib}/%{lean}/bin/* .
 
 
 %changelog
+* Mon Jun 30 2025 Jens Petersen <petersen@redhat.com> - 4.21.0-1
+- https://lean-lang.org/doc/reference/latest/releases/v4.21.0/
+
 * Thu Jun 12 2025 Jens Petersen <petersen@redhat.com> - 4.20.0-4
 - require libstdc++-devel instead of gcc-c++
 - fixup liblean_shared_1.so permissions (needed for c9s) - thanks @salimma
