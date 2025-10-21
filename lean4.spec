@@ -18,7 +18,7 @@ Summary:        Functional programming language and theorem prover
 
 License:        Apache-2.0
 URL:            https://lean-lang.org/
-Source0:        https://github.com/leanprover/lean4/archive/refs/tags/v%{upstreamversion}%{?rcrel}.tar.gz#/%{name}-%{upstreamversion}%{?rcrel}.tar.gz
+Source0:        https://github.com/leanprover/lean4/archive/v%{version}/%{name}-%{upstreamversion}%{?rcrel}.tar.gz
 %if %{defined fedora}
 BuildRequires:  cadical
 %else
