@@ -1,7 +1,7 @@
 # Empty file debugsourcefiles.list
 %global debug_package %{nil}
 
-%global majorversion 4.24
+%global majorversion 4.25
 %global patchlevel 0
 %global upstreamversion %{majorversion}.%{patchlevel}
 
@@ -116,6 +116,9 @@ ln -s ../%{_lib}/%{lean}/bin/* .
 
 
 %changelog
+* Fri Nov 21 2025 Jens Petersen <petersen@redhat.com> - 4.25.0-1
+- https://lean-lang.org/doc/reference/latest/releases/v4.25.0/
+
 * Tue Oct 21 2025 Jens Petersen <petersen@redhat.com> - 4.24.0-1
 - https://lean-lang.org/doc/reference/latest/releases/v4.24.0/
 
