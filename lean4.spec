@@ -111,7 +111,7 @@ ln -s ../%{_lib}/%{lean}/bin/* .
 
 
 %changelog
-* Mon Dec 01 2025 Jens Petersen <petersen@redhat.com> - 4.25.0-2
+* Mon Dec 01 2025 Jens Petersen <petersen@redhat.com> - 4.25.2-1
 - update to 4.25.2
 
 * Fri Nov 21 2025 Jens Petersen <petersen@redhat.com> - 4.25.0-1
