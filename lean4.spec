@@ -7,7 +7,7 @@
 %bcond stage2 0
 
 Name:           lean4
-Version:        4.25.2
+Version:        4.26.0
 Release:        1%{?rcrel:.%rcrel}%{?dist}
 Summary:        Functional programming language and theorem prover
 
@@ -111,6 +111,9 @@ ln -s ../%{_lib}/%{lean}/bin/* .
 
 
 %changelog
+* Thu Dec 18 2025 Jens Petersen <petersen@redhat.com> - 4.26.0-1
+- https://lean-lang.org/doc/reference/latest/releases/v4.26.0/
+
 * Mon Dec 01 2025 Jens Petersen <petersen@redhat.com> - 4.25.2-1
 - update to 4.25.2
 
