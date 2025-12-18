@@ -1,19 +1,19 @@
 # Empty file debugsourcefiles.list
 %global debug_package %{nil}
 
-#%%global rcrel -rc1
+#%%global rcrel rc1
 
 %bcond tests 0
 %bcond stage2 0
 
 Name:           lean4
 Version:        4.25.2
-Release:        1%{?rcrel}%{?dist}
+Release:        1%{?rcrel:.%rcrel}%{?dist}
 Summary:        Functional programming language and theorem prover
 
 License:        Apache-2.0
 URL:            https://lean-lang.org/
-Source0:        https://github.com/leanprover/lean4/archive/v%{version}/%{name}-%{version}%{?rcrel}.tar.gz
+Source0:        https://github.com/leanprover/lean4/archive/v%{version}/%{name}-%{version}%{?rcrel:-%rcrel}.tar.gz
 %if %{defined fedora}
 BuildRequires:  cadical
 %else
@@ -43,7 +43,7 @@ manipulating its data, rather than the details of programming.
 
 
 %prep
-%setup -q -n %{name}-%{version}%{?rcrel}
+%setup -q -n %{name}-%{version}%{?rcrel:-%rcrel}
 
 
 %build
