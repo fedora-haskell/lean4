@@ -27,7 +27,6 @@ BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  gmp-devel
 BuildRequires:  libuv-devel
-#BuildRequires:  mimalloc-devel
 ExcludeArch:    s390x %{ix86}
 Provides:       %{name}-static = %{version}-%{release}
 Requires:       gmp-devel
@@ -47,6 +46,7 @@ manipulating its data, rather than the details of programming.
 
 
 %build
+# mimalloc is built from git
 %cmake \
   -DLEAN_BUILD_TYPE="RELEASE" \
   -DUSE_GITHASH=OFF \
