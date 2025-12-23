@@ -5,6 +5,8 @@
 
 %bcond tests 0
 %bcond stage2 0
+# mimalloc builds via git
+%bcond mimalloc 0
 
 Name:           lean4
 Version:        4.27.0
@@ -14,10 +16,8 @@ Summary:        Functional programming language and theorem prover
 License:        Apache-2.0
 URL:            https://lean-lang.org/
 Source0:        https://github.com/leanprover/lean4/archive/v%{version}%{?rcrel:-%rcrel}/%{name}-%{version}%{?rcrel:-%rcrel}.tar.gz
-%if %{defined fedora}
 BuildRequires:  cadical
-%else
-# also needed to build mimalloc from source
+%if %{with mimalloc}
 BuildRequires:  git-core
 %endif
 %if %{with stage2}
@@ -46,13 +46,16 @@ manipulating its data, rather than the details of programming.
 
 
 %build
-# mimalloc is built from git
 %cmake \
   -DLEAN_BUILD_TYPE="RELEASE" \
   -DUSE_GITHASH=OFF \
   -DLEAN_INSTALL_PREFIX=%{buildroot} \
   -DINSTALL_CADICAL=OFF \
+%if %{without mimalloc}
   -DUSE_MIMALLOC=OFF
+%else
+%nil
+%endif
 %cmake_build
 %if %{with stage2}
 # failing
