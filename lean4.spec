@@ -1,7 +1,7 @@
 # Empty file debugsourcefiles.list
 %global debug_package %{nil}
 
-%global rcrel rc1
+#%%global rcrel rc1
 
 %bcond tests 0
 %bcond stage2 0
@@ -10,7 +10,7 @@
 
 Name:           lean4
 Version:        4.27.0
-Release:        0%{?rcrel:.%rcrel}%{?dist}
+Release:        1%{?rcrel:.%rcrel}%{?dist}
 Summary:        Functional programming language and theorem prover
 
 License:        Apache-2.0
@@ -114,8 +114,8 @@ ln -s ../%{_lib}/%{lean}/bin/* .
 
 
 %changelog
-* Mon Dec 22 2025 Jens Petersen <petersen@redhat.com> - 4.27.0-0.rc1
-- https://lean-lang.org/doc/reference/latest/releases/v4.27.0 RC1
+* Sat Jan 24 2026 Jens Petersen <petersen@redhat.com> - 4.27.0-1
+- https://lean-lang.org/doc/reference/latest/releases/v4.27.0
 
 * Thu Dec 18 2025 Jens Petersen <petersen@redhat.com> - 4.26.0-1
 - https://lean-lang.org/doc/reference/latest/releases/v4.26.0/
