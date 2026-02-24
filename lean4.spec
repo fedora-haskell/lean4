@@ -46,6 +46,10 @@ manipulating its data, rather than the details of programming.
 
 
 %build
+%if 0%{?fedora} >= 44
+# https://github.com/leanprover/lean4/issues/12575
+%global _cmake_generator "Unix Makefiles"
+%endif
 %cmake \
   -DLEAN_BUILD_TYPE="RELEASE" \
   -DUSE_GITHASH=OFF \
