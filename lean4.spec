@@ -9,7 +9,7 @@
 %bcond mimalloc 0
 
 Name:           lean4
-Version:        4.30.0
+Version:        4.32.2
 Release:        1%{?rcrel:.%rcrel}%{?dist}
 Summary:        Functional programming language and theorem prover
 
@@ -27,6 +27,7 @@ BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  gmp-devel
 BuildRequires:  libuv-devel
+BuildRequires:  openssl-devel
 ExcludeArch:    s390x %{ix86}
 Provides:       %{name}-static = %{version}-%{release}
 Requires:       gmp-devel
@@ -121,6 +122,9 @@ ln -s ../%{_lib}/%{lean}/bin/* .
 
 
 %changelog
+* Sun Aug 02 2026 Jens Petersen <petersen@redhat.com> - 4.32.2-1rc1:.rc1
+- https://lean-lang.org/doc/reference/latest/releases/v4.32.2/
+
 * Sun Jun 14 2026 Jens Petersen <petersen@redhat.com> - 4.30.0-1
 - https://lean-lang.org/doc/reference/latest/releases/v4.30.0
 
