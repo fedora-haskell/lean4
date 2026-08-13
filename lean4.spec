@@ -9,7 +9,7 @@
 %bcond mimalloc 0
 
 Name:           lean4
-Version:        4.32.2
+Version:        4.33.0
 Release:        1%{?rcrel:.%rcrel}%{?dist}
 Summary:        Functional programming language and theorem prover
 
@@ -122,7 +122,10 @@ ln -s ../%{_lib}/%{lean}/bin/* .
 
 
 %changelog
-* Sun Aug 02 2026 Jens Petersen <petersen@redhat.com> - 4.32.2-1rc1:.rc1
+* Tue Aug 11 2026 Jens Petersen <petersen@redhat.com> - 4.33.0-1
+- https://lean-lang.org/doc/reference/latest/releases/v4.33.0/
+
+* Sun Aug 02 2026 Jens Petersen <petersen@redhat.com> - 4.32.2-1
 - https://lean-lang.org/doc/reference/latest/releases/v4.32.2/
 
 * Sun Jun 14 2026 Jens Petersen <petersen@redhat.com> - 4.30.0-1
